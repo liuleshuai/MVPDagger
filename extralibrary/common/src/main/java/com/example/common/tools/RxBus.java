@@ -1,4 +1,4 @@
-package com.example.common;
+package com.example.common.tools;
 
 import io.reactivex.Flowable;
 import io.reactivex.processors.FlowableProcessor;
