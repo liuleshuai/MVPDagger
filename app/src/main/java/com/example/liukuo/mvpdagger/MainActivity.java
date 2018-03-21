@@ -9,4 +9,9 @@ public class MainActivity extends BaseActivity<BasePresenter> {
     protected int getLayoutId() {
         return R.layout.activity_main;
     }
+
+    @Override
+    protected void initEventAndData() {
+
+    }
 }
