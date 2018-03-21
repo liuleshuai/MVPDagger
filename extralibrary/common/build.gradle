@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android["externalCompileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["externalBuildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["externalMinSdkVersion"]
+        targetSdkVersion rootProject.ext.android["externalTargetSdkVersion"]
+        versionCode rootProject.ext.android["externalVersionCode"]
+        versionName rootProject.ext.android["externalVersionName"]
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:${rootProject.ext.android["androidSupportVersion"]}"
+    testCompile 'junit:junit:4.12'
+
+    //下面两个是RxJava2 和RxAndroid
+    compile 'io.reactivex.rxjava2:rxjava:2.0.7'
+    //用于Android开发,拓展RxJava功能，添加了 Android 用的接口
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    //转换器，请求结果转换成Model
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //配合retrofit使用
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    //权限
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+
+    //Log打印
+    compile 'com.orhanobut:logger:latest.integration'
+    // fastjson
+    compile 'com.alibaba:fastjson:latest.integration'
+}
