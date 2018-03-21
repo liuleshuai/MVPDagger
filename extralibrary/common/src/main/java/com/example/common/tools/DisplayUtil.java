@@ -11,6 +11,8 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
+import com.example.common.base.BaseApplication;
+
 
 /**
  * 屏幕相关的辅助类
@@ -30,8 +32,8 @@ public class DisplayUtil {
      * @param pxValue （DisplayMetrics类中属性density）
      * @return
      */
-    public static int px2dip(Context context, float pxValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
+    public static int px2dip(float pxValue) {
+        final float scale = BaseApplication.getAppResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
 
@@ -41,8 +43,8 @@ public class DisplayUtil {
      * @param dipValue （DisplayMetrics类中属性density）
      * @return
      */
-    public static int dip2px(Context context, float dipValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
+    public static int dip2px(float dipValue) {
+        final float scale = BaseApplication.getAppResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
 
@@ -52,8 +54,8 @@ public class DisplayUtil {
      * @param pxValue （DisplayMetrics类中属性scaledDensity）
      * @return
      */
-    public static int px2sp(Context context, float pxValue) {
-        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+    public static int px2sp(float pxValue) {
+        final float fontScale = BaseApplication.getAppResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
     }
 
@@ -63,8 +65,8 @@ public class DisplayUtil {
      * @param spValue （DisplayMetrics类中属性scaledDensity）
      * @return
      */
-    public static int sp2px(Context context, float spValue) {
-        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+    public static int sp2px(float spValue) {
+        final float fontScale = BaseApplication.getAppResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 

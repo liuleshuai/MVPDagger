@@ -1,13 +1,12 @@
 package com.example.liukuo.mvpdagger;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import com.example.common.base.BaseActivity;
+import com.example.common.base.BasePresenter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity<BasePresenter> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
 }
