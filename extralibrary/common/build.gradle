@@ -12,6 +12,13 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -27,6 +34,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "com.android.support:appcompat-v7:${rootProject.ext.android["androidSupportVersion"]}"
+    compile "com.android.support:design:${rootProject.ext.android["androidSupportVersion"]}"
+    compile "com.android.support:cardview-v7:${rootProject.ext.android["androidSupportVersion"]}"
+    compile "com.android.support:support-v4:${rootProject.ext.android["androidSupportVersion"]}"
     testCompile 'junit:junit:4.12'
 
     // 添加MultiDex支持库的依赖
@@ -58,4 +68,8 @@ dependencies {
     compile 'com.orhanobut:logger:latest.integration'
     // fastjson
     compile 'com.alibaba:fastjson:latest.integration'
+
+    //路由
+    compile 'com.alibaba:arouter-api:latest.integration'
+    annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'
 }

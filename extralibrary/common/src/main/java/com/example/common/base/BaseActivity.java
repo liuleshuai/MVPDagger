@@ -11,7 +11,7 @@ import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
- * Created by LiuKuo at 2018/3/21
+ * @author liukuo
  */
 
 public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements BaseView {

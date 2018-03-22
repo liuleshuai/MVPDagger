@@ -1,24 +1,36 @@
 package com.example.liukuo.mvpdagger.ui.activity;
 
-import android.graphics.Color;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.common.base.BaseActivity;
 import com.example.liukuo.mvpdagger.R;
+import com.example.liukuo.mvpdagger.app.Constants;
 import com.example.liukuo.mvpdagger.model.MainContract;
 import com.example.liukuo.mvpdagger.presenter.MainPresenter;
 
-import butterknife.BindView;
-import butterknife.OnClick;
+import java.util.ArrayList;
+import java.util.List;
 
+import butterknife.BindView;
+
+/**
+ * @author liukuo
+ */
+@Route(path = "/activity/2")
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
 
-    @BindView(R.id.tv)
-    TextView tv;
-    @BindView(R.id.button)
-    Button button;
+    @BindView(R.id.view_pager)
+    ViewPager mViewPager;
+    @BindView(R.id.navigation_view)
+    BottomNavigationView bottomNavigationView;
+
+    private List<Fragment> fragmentList;
 
     @Override
     protected int getLayoutId() {
@@ -26,23 +38,61 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     @Override
-    protected void onViewCreated() {
-        super.onViewCreated();
-    }
-
-    @Override
     protected void initEventAndData() {
+        initData();
+        mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return fragmentList.get(position);
+            }
 
+            @Override
+            public int getCount() {
+                return fragmentList.size();
+            }
+        });
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                bottomNavigationView.getChildAt(position).setSelected(true);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.wechat:
+                        mViewPager.setCurrentItem(Constants.FIRST);
+                        break;
+                    case R.id.communcation:
+                        mViewPager.setCurrentItem(Constants.SECOND);
+                        break;
+                    case R.id.find:
+                        mViewPager.setCurrentItem(Constants.THIRD);
+                        break;
+                    case R.id.mine:
+                        mViewPager.setCurrentItem(Constants.FOURTH);
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
-    @OnClick(R.id.button)
-    public void onViewClicked() {
-        Log.d("LK", "111");
-        mPresenter.changeColor();
-    }
+    private void initData() {
+        fragmentList = new ArrayList<>();
 
-    @Override
-    public void setColor() {
-        button.setBackgroundColor(Color.BLUE);
     }
 }
