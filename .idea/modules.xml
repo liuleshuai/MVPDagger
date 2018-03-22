@@ -3,13 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MVPDagger.iml" filepath="$PROJECT_DIR$/MVPDagger.iml" />
-      <module fileurl="file://E:\AndroidStudioProjects\MVPDagger\MVPDagger.iml" filepath="E:\AndroidStudioProjects\MVPDagger\MVPDagger.iml" />
+      <module fileurl="file://E:/AndroidStudioProjects/MVPDagger/MVPDagger.iml" filepath="E:/AndroidStudioProjects/MVPDagger/MVPDagger.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://E:\AndroidStudioProjects\MVPDagger\app\app.iml" filepath="E:\AndroidStudioProjects\MVPDagger\app\app.iml" />
+      <module fileurl="file://E:/AndroidStudioProjects/MVPDagger/app/app.iml" filepath="E:/AndroidStudioProjects/MVPDagger/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/extralibrary/common/common.iml" filepath="$PROJECT_DIR$/extralibrary/common/common.iml" />
-      <module fileurl="file://E:\AndroidStudioProjects\MVPDagger\extralibrary\common\common.iml" filepath="E:\AndroidStudioProjects\MVPDagger\extralibrary\common\common.iml" />
+      <module fileurl="file://E:/AndroidStudioProjects/MVPDagger/extralibrary/common/common.iml" filepath="E:/AndroidStudioProjects/MVPDagger/extralibrary/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/extralibrary/extralibrary.iml" filepath="$PROJECT_DIR$/extralibrary/extralibrary.iml" />
-      <module fileurl="file://E:\AndroidStudioProjects\MVPDagger\extralibrary\extralibrary.iml" filepath="E:\AndroidStudioProjects\MVPDagger\extralibrary\extralibrary.iml" />
+      <module fileurl="file://E:/AndroidStudioProjects/MVPDagger/extralibrary/extralibrary.iml" filepath="E:/AndroidStudioProjects/MVPDagger/extralibrary/extralibrary.iml" />
     </modules>
   </component>
 </project>

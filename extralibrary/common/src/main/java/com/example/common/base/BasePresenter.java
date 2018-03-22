@@ -1,15 +1,12 @@
 package com.example.common.base;
 
-import javax.inject.Inject;
-
 /**
- * Created by LiuKuo at 2018/3/21
+ * @author liukuo
  */
 
 public class BasePresenter<T extends BaseView> {
-    private T mView;
+    protected T mView;
 
-    @Inject
     public BasePresenter() {
     }
 
