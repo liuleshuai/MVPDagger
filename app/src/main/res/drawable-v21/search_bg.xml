@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/while_most_color">
+    <!--@android:id/mask 拿上面的颜色去覆盖rect中的颜色，@android:color/white没起作用，只是说明mask非透明-->
+    <!--如果是图片的话，会覆盖在非透明的区域-->
+    <item
+        android:id="@android:id/mask"
+        android:drawable="@android:color/white" />
+
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="40dp" />
+
+            <gradient
+                android:endColor="@color/deep_red"
+                android:startColor="@color/light_red" />
+
+            <stroke
+                android:width="1px"
+                android:color="@color/while_most_color" />
+        </shape>
+    </item>
+</ripple>

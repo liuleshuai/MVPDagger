@@ -5,6 +5,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -15,6 +16,7 @@ import com.example.liukuo.mvpdagger.R;
 import com.example.liukuo.mvpdagger.app.Constants;
 import com.example.liukuo.mvpdagger.model.MainContract;
 import com.example.liukuo.mvpdagger.presenter.MainPresenter;
+import com.example.liukuo.mvpdagger.ui.fragment.SearchDialogFragment;
 import com.example.liukuo.mvpdagger.ui.fragment.WeChatFragment;
 
 import java.util.ArrayList;
@@ -38,6 +40,21 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.extra_title_bar_item, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.search_item) {
+            SearchDialogFragment searchDialogFragment = new SearchDialogFragment();
+            searchDialogFragment.show(getFragmentManager(), "SearchDialogFragment");
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

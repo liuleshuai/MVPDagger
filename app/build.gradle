@@ -74,4 +74,6 @@ dependencies {
 
     //路由
     annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'
+    compile('com.github.hotchemi:permissionsdispatcher:2.4.0') { exclude module: 'support-v13' }
+    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
 }

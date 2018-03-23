@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_search_shape"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="6dp">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <ImageButton
+                android:id="@+id/search_back_ib"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@null"
+                android:src="@mipmap/icon_back_arrow_normal" />
+
+            <TextView
+                android:id="@+id/search_tv"
+                android:layout_width="54dp"
+                android:layout_height="28dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/search_bg"
+                android:contentDescription="@null"
+                android:gravity="center"
+                android:text="Search"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/search_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:hint="find more dry foods"
+                android:textColor="@color/gray_search"
+                android:textColorHint="@color/gray_search"
+                android:textCursorDrawable="@drawable/shape_cursor"
+                android:textSize="14sp" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/search_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:visibility="visible"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/news"
+                android:textSize="30sp" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
