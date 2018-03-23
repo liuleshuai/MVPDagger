@@ -15,4 +15,11 @@ public class Constants {
     public static final int THIRD = 2;
 
     public static final int FOURTH = 3;
+
+    /**
+     * 界面传递参数标识
+     */
+    public static final String ARG_PARAM1 = "param1";
+
+    public static final String ARG_PARAM2 = "param2";
 }

@@ -70,6 +70,8 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.integration'
+
     //路由
     annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'
 }

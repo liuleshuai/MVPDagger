@@ -5,17 +5,21 @@
     <item
         android:id="@+id/wechat"
         android:icon="@mipmap/icon_project_not_selected"
-        android:title="微信" />
+        android:title="微信"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/communcation"
         android:icon="@mipmap/icon_knowledge_hierarchy_not_selected"
-        android:title="通讯录" />
+        android:title="通讯录"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/find"
         android:icon="@mipmap/icon_navigation_not_selected"
-        android:title="发现" />
+        android:title="发现"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/mine"
         android:icon="@mipmap/icon_home_pager_not_selected"
-        android:title="我" />
+        android:title="我"
+        app:showAsAction="ifRoom" />
 </menu>
