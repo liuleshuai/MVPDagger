@@ -14,7 +14,6 @@ import com.example.common.base.BaseDialogFragment;
 import com.example.liukuo.mvpdagger.R;
 import com.example.liukuo.mvpdagger.model.SearchDialogContract;
 import com.example.liukuo.mvpdagger.presenter.SearchDialogPresenter;
-import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -56,6 +55,8 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
         window.setLayout(width, WindowManager.LayoutParams.MATCH_PARENT);
         window.setGravity(Gravity.TOP);
     }
+
+
 
     @Override
     protected int getLayoutId() {
