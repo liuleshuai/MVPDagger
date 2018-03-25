@@ -6,30 +6,28 @@ import io.reactivex.processors.PublishProcessor;
 
 /**
  * RxJava2 设置监听器，监听event
- * <p>
- * Created by LiuKuo at 2018/3/21
+ * Created by 67017 on 2018/3/25.
  */
 
-public class RxBus {
-
+public class RxEvent {
     /**
      * 相当于一个事件队列，存储的是Flowable事件
      */
-    private FlowableProcessor<Object> bus;
+    private FlowableProcessor<Object> eventQueue;
 
     /**
      * PublishSubject只会把在订阅发生的时间点之后来自原始Flowable的数据发射给观察者
      */
-    public RxBus() {
-        bus = PublishProcessor.create().toSerialized();
+    public RxEvent() {
+        eventQueue = PublishProcessor.create().toSerialized();
     }
 
-    public static RxBus getDefault() {
-        return RxBusHolder.Instance;
+    public static RxEvent getDefault() {
+        return RxEventHolder.instance;
     }
 
-    private static class RxBusHolder {
-        private static RxBus Instance = new RxBus();
+    private static class RxEventHolder {
+        private static RxEvent instance = new RxEvent();
     }
 
     /**
@@ -38,7 +36,7 @@ public class RxBus {
      * @param o Object
      */
     public void post(Object o) {
-        bus.onNext(o);
+        eventQueue.onNext(o);
     }
 
     /**
@@ -49,6 +47,6 @@ public class RxBus {
      * @return Flowable<T>
      */
     public <T> Flowable<T> toFlowable(Class<T> eventType) {
-        return bus.ofType(eventType);
+        return eventQueue.ofType(eventType);
     }
 }
