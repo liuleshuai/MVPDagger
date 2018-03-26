@@ -68,10 +68,11 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/news"
-                android:textSize="30sp" />
+                android:text=""
+                android:textSize="12sp" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

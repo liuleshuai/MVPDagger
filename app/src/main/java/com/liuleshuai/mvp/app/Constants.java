@@ -5,6 +5,8 @@ package com.liuleshuai.mvp.app;
  */
 
 public class Constants {
+
+    public static final String MOVIE_URL = "https://api.douban.com/v2/movie/";
     /**
      * tag fragment classify
      */

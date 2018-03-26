@@ -31,6 +31,18 @@ public class ClassUtil {
     }
 
     /**
+     * 返回xxx.class
+     */
+    public static <T> Class<T> getTClass(Object o) {
+        try {
+            return (Class<T>) ((ParameterizedType) (o.getClass().getGenericSuperclass()))
+                    .getActualTypeArguments()[0];
+        } catch (ClassCastException e) {
+        }
+        return null;
+    }
+
+    /**
      * 由类名获取类
      *
      * @param className

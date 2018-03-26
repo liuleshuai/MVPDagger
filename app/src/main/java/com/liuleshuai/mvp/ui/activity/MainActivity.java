@@ -97,9 +97,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            resetToDefaultIcon();//重置到默认不选中图片
             switch (item.getItemId()) {
                 case R.id.wechat:
                     mViewPager.setCurrentItem(Constants.FIRST);
+                    item.setIcon(R.mipmap.icon_project_not_selected);
                     break;
                 case R.id.communcation:
                     mViewPager.setCurrentItem(Constants.SECOND);
@@ -116,6 +118,17 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             return true;
         }
     };
+
+    private void resetToDefaultIcon() {
+        MenuItem weChat = bottomNavigationView.getMenu().findItem(R.id.wechat);
+        weChat.setIcon(R.mipmap.icon_talk);
+        MenuItem communcation = bottomNavigationView.getMenu().findItem(R.id.communcation);
+        communcation.setIcon(R.mipmap.icon_knowledge_hierarchy_not_selected);
+        MenuItem find = bottomNavigationView.getMenu().findItem(R.id.find);
+        communcation.setIcon(R.mipmap.icon_navigation_not_selected);
+        MenuItem mine = bottomNavigationView.getMenu().findItem(R.id.mine);
+        mine.setIcon(R.mipmap.icon_home_pager_not_selected);
+    }
 
     private void initData() {
         fragmentList = new ArrayList<>();

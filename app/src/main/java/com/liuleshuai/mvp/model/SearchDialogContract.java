@@ -8,10 +8,10 @@ import com.liuleshuai.common.base.BaseView;
 
 public interface SearchDialogContract {
     interface View extends BaseView {
-
+        void showMovieData(String data);
     }
 
     interface Presenter {
-
+        void getMovieData();
     }
 }

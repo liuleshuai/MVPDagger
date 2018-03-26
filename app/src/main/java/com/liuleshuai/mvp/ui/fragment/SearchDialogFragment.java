@@ -10,13 +10,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding2.view.RxView;
 import com.liuleshuai.common.base.BaseDialogFragment;
 import com.liuleshuai.mvp.R;
 import com.liuleshuai.mvp.model.SearchDialogContract;
 import com.liuleshuai.mvp.presenter.SearchDialogPresenter;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by LiuKuo at 2018/3/23
@@ -29,6 +33,8 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
     TextView searchTv;
     @BindView(R.id.search_edit)
     EditText searchEdit;
+    @BindView(R.id.tv)
+    TextView tv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,11 +70,22 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
 
     @Override
     protected void initEventAndData() {
-
+        RxView.clicks(searchTv).throttleFirst(500, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        mPresenter.getMovieData();
+                    }
+                });
     }
 
     @OnClick(R.id.search_back_ib)
     public void onViewClicked() {
         dismiss();
+    }
+
+    @Override
+    public void showMovieData(String data) {
+        tv.setText(data);
     }
 }
