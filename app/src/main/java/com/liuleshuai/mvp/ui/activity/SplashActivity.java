@@ -12,13 +12,8 @@ import com.liuleshuai.mvp.R;
 import com.liuleshuai.mvp.model.SplashContract;
 import com.liuleshuai.mvp.presenter.SplashPresenter;
 
-import java.util.concurrent.TimeUnit;
-
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 
 @Route(path = "/activity/splash")
 public class SplashActivity extends BaseActivity<SplashPresenter> implements SplashContract.View {
@@ -36,18 +31,12 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     @Override
     protected void onViewCreated() {
         super.onViewCreated();
-        Observable.timer(2000, TimeUnit.MILLISECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Long>() {
-                    @Override
-                    public void accept(Long aLong) throws Exception {
-                        ARouter.getInstance().build("/activity/main").navigation();
-                    }
-                });
     }
 
     @Override
     protected void initEventAndData() {
+        mPresenter.jump();
+        finish();
     }
 
     @OnClick(R.id.button)

@@ -21,5 +21,6 @@ public interface SplashContract {
      */
     interface Presenter {
         void changeColor();
+        void jump();
     }
 }
