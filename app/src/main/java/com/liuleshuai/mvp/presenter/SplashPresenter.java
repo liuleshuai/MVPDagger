@@ -27,7 +27,7 @@ public class SplashPresenter extends BasePresenter<SplashContract.View> implemen
 
     @Override
     public void jump() {
-        addDisposable(Observable.timer(5000, TimeUnit.MILLISECONDS)
+        addDisposable(Observable.timer(2000, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Long>() {
                     @Override

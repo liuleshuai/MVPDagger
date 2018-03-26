@@ -36,7 +36,6 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     @Override
     protected void initEventAndData() {
         mPresenter.jump();
-        finish();
     }
 
     @OnClick(R.id.button)
