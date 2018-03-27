@@ -21,13 +21,20 @@ public class SplashPresenter extends BasePresenter<SplashContract.View> implemen
     }
 
     @Override
-    public void changeColor() {
-        mView.setColor();
+    public void jump() {
+        addDisposable(Observable.just(0).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        ARouter.getInstance().build("/activity/main").navigation();
+                    }
+                })
+        );
     }
 
     @Override
-    public void jump() {
-        addDisposable(Observable.timer(2000, TimeUnit.MILLISECONDS)
+    public void jumpDelay() {
+        addDisposable(Observable.timer(1000, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Long>() {
                     @Override

@@ -12,7 +12,6 @@ public interface SplashContract {
      * activity的处理
      */
     interface View extends BaseView {
-        void setColor();
 
     }
 
@@ -20,7 +19,7 @@ public interface SplashContract {
      * presenter的处理
      */
     interface Presenter {
-        void changeColor();
         void jump();
+        void jumpDelay();
     }
 }

@@ -1,27 +1,21 @@
 package com.liuleshuai.mvp.ui.activity;
 
-import android.graphics.Color;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
+import android.animation.Animator;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.liuleshuai.common.base.BaseActivity;
 import com.liuleshuai.mvp.R;
 import com.liuleshuai.mvp.model.SplashContract;
 import com.liuleshuai.mvp.presenter.SplashPresenter;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 @Route(path = "/activity/splash")
 public class SplashActivity extends BaseActivity<SplashPresenter> implements SplashContract.View {
 
-    @BindView(R.id.tv)
-    TextView tv;
-    @BindView(R.id.button)
-    Button button;
+    @BindView(R.id.animation_view)
+    LottieAnimationView animationView;
 
     @Override
     protected int getLayoutId() {
@@ -29,24 +23,29 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     }
 
     @Override
-    protected void onViewCreated() {
-        super.onViewCreated();
-    }
-
-    @Override
     protected void initEventAndData() {
-        mPresenter.jump();
-    }
+        animationView.setAnimation("AndroidWare.json");
+        animationView.playAnimation();
+        animationView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
 
-    @OnClick(R.id.button)
-    public void onViewClicked() {
-        Log.d("LK", "111");
-        mPresenter.changeColor();
-        ARouter.getInstance().build("/activity/main").navigation();
-    }
+            }
 
-    @Override
-    public void setColor() {
-        button.setBackgroundColor(Color.BLUE);
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mPresenter.jump();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
     }
 }
