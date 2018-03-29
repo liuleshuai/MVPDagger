@@ -11,9 +11,6 @@ public class BasePresenter<T extends BaseView> {
     protected T mView;
     private CompositeDisposable compositeDisposable;
 
-    public BasePresenter() {
-    }
-
     /**
      * 添加事件管理
      * 用于管理事件的生命周期

@@ -19,6 +19,7 @@
     <color name="deep_red">#dc3b1f</color>
     <color name="while_most_color">#e4e4e4</color>
     <color name="blackish_green">#6D8FB0</color>
+    <color name="toast_stroke_gray">#99d4d4d4</color>
 
     <color name="light_transparent">#00ffffff</color>
     <color name="transparent">#00000000</color>

@@ -1,5 +1,7 @@
 package com.liuleshuai.mvpdagger.app;
 
+import java.io.File;
+
 /**
  * Created by LiuKuo at 2018/3/22
  */
@@ -7,6 +9,14 @@ package com.liuleshuai.mvpdagger.app;
 public class Constants {
 
     public static final String MOVIE_URL = "https://api.douban.com/v2/movie/";
+
+    /**
+     * Path
+     */
+    public static final String PATH_DATA = MyApplication.getAppContext().getCacheDir().getAbsolutePath() + File.separator + "data";
+
+    public static final String PATH_CACHE = PATH_DATA + "/NetCache";
+
     /**
      * tag fragment classify
      */
@@ -24,4 +34,19 @@ public class Constants {
     public static final String ARG_PARAM1 = "param1";
 
     public static final String ARG_PARAM2 = "param2";
+
+    /**
+     * Shared Preference key
+     */
+    public static final String ACCOUNT = "account";
+
+    public static final String LOGIN_STATUS = "login_status";
+
+    /**
+     * OkHttp设置
+     */
+    public static final int CONNECT_TIMEOUT = 10;
+    public static final int READ_TIMEOUT = 10;
+    public static final int WRITE_TIMEOUT = 10;
+
 }

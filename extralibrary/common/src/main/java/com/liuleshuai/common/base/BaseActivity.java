@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import com.liuleshuai.common.tools.ActivityManager;
 import com.liuleshuai.common.tools.ClassUtil;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
@@ -15,7 +17,8 @@ import me.yokeyword.fragmentation.SupportActivity;
  */
 
 public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements BaseView {
-    protected T mPresenter;
+    @Inject
+    T mPresenter;
     private Unbinder unBinder;
 
     @Override

@@ -15,8 +15,7 @@ public class MyApplication extends BaseApplication {
     private String tag = "LK";
 
     @Override
-    public void onCreate() {
-        super.onCreate();
+    public void initSDK() {
         initARouter();
         initLogger();
     }

@@ -76,6 +76,8 @@ dependencies {
     compile('com.airbnb.android:lottie:2.5.1') {
         exclude group: 'com.android.support'
     }
+    // dagger2
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.2'
 
     //路由
     annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'

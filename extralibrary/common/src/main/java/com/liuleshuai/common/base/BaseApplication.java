@@ -9,13 +9,14 @@ import android.support.multidex.MultiDex;
  * Created by LiuKuo at 2018/3/21
  */
 
-public class BaseApplication extends Application {
+public abstract class BaseApplication extends Application {
     private static BaseApplication baseApplication;
 
     @Override
     public void onCreate() {
         super.onCreate();
         baseApplication = this;
+        initSDK();
     }
 
     /**
@@ -38,7 +39,13 @@ public class BaseApplication extends Application {
     public static Context getAppContext() {
         return baseApplication;
     }
+
     public static Resources getAppResources() {
         return baseApplication.getResources();
     }
+
+    /**
+     * 在此进行SDK的初始化
+     */
+    public abstract void initSDK();
 }
