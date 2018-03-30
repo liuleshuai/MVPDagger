@@ -1,8 +1,8 @@
 package com.liuleshuai.mvpdagger.presenter;
 
-import com.liuleshuai.common.base.BasePresenter;
 import com.liuleshuai.mvpdagger.app.DataManager;
 import com.liuleshuai.mvpdagger.model.MainContract;
+import com.liuleshuai.mvpdagger.ui.base.BasePresenter;
 
 import javax.inject.Inject;
 

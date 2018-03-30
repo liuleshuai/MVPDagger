@@ -1,8 +1,8 @@
 package com.liuleshuai.mvpdagger.presenter;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.liuleshuai.common.base.BasePresenter;
 import com.liuleshuai.mvpdagger.model.SplashContract;
+import com.liuleshuai.mvpdagger.ui.base.BasePresenter;
 
 import java.util.concurrent.TimeUnit;
 

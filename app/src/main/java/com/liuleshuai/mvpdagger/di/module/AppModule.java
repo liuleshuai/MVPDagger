@@ -1,6 +1,7 @@
 package com.liuleshuai.mvpdagger.di.module;
 
 import com.liuleshuai.mvpdagger.app.DataManager;
+import com.liuleshuai.mvpdagger.app.MyApplication;
 import com.liuleshuai.mvpdagger.http.HttpHelper;
 import com.liuleshuai.mvpdagger.http.RetrofitHelper;
 import com.liuleshuai.mvpdagger.preference.PreferenceHelper;
@@ -16,6 +17,17 @@ import dagger.Provides;
  */
 @Module
 public class AppModule {
+    private final MyApplication application;
+
+    public AppModule(MyApplication application) {
+        this.application = application;
+    }
+
+    @Provides
+    @Singleton
+    MyApplication provideApplicationContext() {
+        return application;
+    }
 
     @Singleton
     @Provides

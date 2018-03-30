@@ -9,13 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.liuleshuai.common.base.BaseActivity;
-import com.liuleshuai.common.base.BaseFragment;
-import com.liuleshuai.common.tools.BottomNavigationViewHelper;
 import com.liuleshuai.mvpdagger.R;
 import com.liuleshuai.mvpdagger.app.Constants;
 import com.liuleshuai.mvpdagger.model.MainContract;
 import com.liuleshuai.mvpdagger.presenter.MainPresenter;
+import com.liuleshuai.mvpdagger.tools.BottomNavigationViewHelper;
+import com.liuleshuai.mvpdagger.ui.base.BaseActivity;
+import com.liuleshuai.mvpdagger.ui.base.BaseFragment;
 import com.liuleshuai.mvpdagger.ui.fragment.SearchDialogFragment;
 import com.liuleshuai.mvpdagger.ui.fragment.WeChatFragment;
 
@@ -74,6 +74,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         mViewPager.addOnPageChangeListener(onPageListener);
         bottomNavigationView.setOnNavigationItemSelectedListener(onItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+    }
+
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
     }
 
     private ViewPager.OnPageChangeListener onPageListener = new ViewPager.OnPageChangeListener() {

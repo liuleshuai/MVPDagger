@@ -63,12 +63,50 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "com.android.support:appcompat-v7:${rootProject.ext.android["androidSupportVersion"]}"
+    compile "com.android.support:design:${rootProject.ext.android["androidSupportVersion"]}"
+    compile "com.android.support:cardview-v7:${rootProject.ext.android["androidSupportVersion"]}"
+    compile "com.android.support:support-v4:${rootProject.ext.android["androidSupportVersion"]}"
     testCompile 'junit:junit:4.12'
-    compile project(':extralibrary:common')
 
-    //butterKnife
+    // 添加MultiDex支持库的依赖
+    compile 'com.android.support:multidex:1.0.1'
+
+    //butterKnife(注意：在library中只需这一个，否则报错)
     compile 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // fragmentation
+    compile 'me.yokeyword:fragmentation:1.3.3'
+
+    //下面两个是RxJava2 和RxAndroid
+    compile 'io.reactivex.rxjava2:rxjava:2.1.5'
+    //用于Android开发,拓展RxJava功能，添加了 Android 用的接口
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    //转换器，请求结果转换成Model
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //配合retrofit使用
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    //dagger2
+    compile "com.google.dagger:dagger:${rootProject.ext.android["daggerVersion"]}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.ext.android["daggerVersion"]}"
+    //RxBinding（支持RxJava2的版本）
+    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    compile 'com.jakewharton.rxbinding2:rxbinding-support-v4:2.0.0'
+    compile 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.0.0'
+    compile 'com.jakewharton.rxbinding2:rxbinding-design:2.0.0'
+    compile 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.0.0'
+
+    //权限
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+
+    //Log打印
+    compile 'com.orhanobut:logger:latest.integration'
+    // fastjson
+    compile 'com.alibaba:fastjson:latest.integration'
+
+    //路由
+    compile 'com.alibaba:arouter-api:latest.integration'
+    annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'
 
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.integration'
 
@@ -76,9 +114,4 @@ dependencies {
     compile('com.airbnb.android:lottie:2.5.1') {
         exclude group: 'com.android.support'
     }
-    // dagger2
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.2'
-
-    //路由
-    annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'
 }

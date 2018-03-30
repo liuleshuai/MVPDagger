@@ -1,8 +1,8 @@
 package com.liuleshuai.mvpdagger.app;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.liuleshuai.common.base.BaseApplication;
 import com.liuleshuai.mvpdagger.BuildConfig;
+import com.liuleshuai.mvpdagger.ui.base.BaseApplication;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;

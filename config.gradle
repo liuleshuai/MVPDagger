@@ -4,9 +4,11 @@ ext {
             externalBuildToolsVersion: "26.0.2",
             externalMinSdkVersion    : 17,
             externalTargetSdkVersion : 26,
-            externalVersionCode       : 1,
-            externalVersionName       : "1.0",
+            externalVersionCode      : 1,
+            externalVersionName      : "1.0",
 
-            androidSupportVersion    : "26.+"
+            androidSupportVersion    : "26.+",
+
+            daggerVersion            : "2.9"
     ]
 }

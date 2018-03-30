@@ -1,6 +1,6 @@
 package com.liuleshuai.mvpdagger.model;
 
-import com.liuleshuai.common.base.BaseView;
+import com.liuleshuai.mvpdagger.ui.base.BaseView;
 
 /**
  * Created by LiuKuo at 2018/3/23

@@ -4,10 +4,10 @@ import android.animation.Animator;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.liuleshuai.common.base.BaseActivity;
 import com.liuleshuai.mvpdagger.R;
 import com.liuleshuai.mvpdagger.model.SplashContract;
 import com.liuleshuai.mvpdagger.presenter.SplashPresenter;
+import com.liuleshuai.mvpdagger.ui.base.BaseActivity;
 
 import butterknife.BindView;
 
@@ -47,5 +47,10 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
 
             }
         });
+    }
+
+    @Override
+    protected void initInject() {
+
     }
 }

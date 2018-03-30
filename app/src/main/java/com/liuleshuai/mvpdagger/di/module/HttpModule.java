@@ -1,12 +1,12 @@
 package com.liuleshuai.mvpdagger.di.module;
 
-import com.liuleshuai.common.tools.NetWorkUtils;
 import com.liuleshuai.mvpdagger.BuildConfig;
 import com.liuleshuai.mvpdagger.app.Constants;
 import com.liuleshuai.mvpdagger.app.MyApplication;
 import com.liuleshuai.mvpdagger.di.qualifier.CustomeNameUrl;
 import com.liuleshuai.mvpdagger.http.HttpApis;
 import com.liuleshuai.mvpdagger.http.cookies.CookiesManager;
+import com.liuleshuai.mvpdagger.tools.NetWorkUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
+import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -29,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by LiuKuo at 2018/3/29
  */
-
+@Module
 public class HttpModule {
     @Singleton
     @Provides

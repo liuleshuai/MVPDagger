@@ -11,10 +11,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.jakewharton.rxbinding2.view.RxView;
-import com.liuleshuai.common.base.BaseDialogFragment;
 import com.liuleshuai.mvpdagger.R;
 import com.liuleshuai.mvpdagger.model.SearchDialogContract;
 import com.liuleshuai.mvpdagger.presenter.SearchDialogPresenter;
+import com.liuleshuai.mvpdagger.ui.base.BaseDialogFragment;
 
 import java.util.concurrent.TimeUnit;
 

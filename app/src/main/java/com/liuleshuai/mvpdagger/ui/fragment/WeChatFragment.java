@@ -7,13 +7,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.liuleshuai.common.base.BaseFragment;
 import com.liuleshuai.mvpdagger.R;
 import com.liuleshuai.mvpdagger.app.Constants;
 import com.liuleshuai.mvpdagger.bean.WeChatBean;
 import com.liuleshuai.mvpdagger.model.WeChatContract;
 import com.liuleshuai.mvpdagger.presenter.WeChatPresenter;
 import com.liuleshuai.mvpdagger.ui.adapter.WeChatAdapter;
+import com.liuleshuai.mvpdagger.ui.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

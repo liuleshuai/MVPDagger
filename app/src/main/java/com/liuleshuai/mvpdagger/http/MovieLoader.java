@@ -2,7 +2,6 @@ package com.liuleshuai.mvpdagger.http;
 
 import android.support.annotation.NonNull;
 
-import com.liuleshuai.common.http.RetrofitManager;
 import com.liuleshuai.mvpdagger.bean.MovieEntity;
 
 import org.reactivestreams.Publisher;
