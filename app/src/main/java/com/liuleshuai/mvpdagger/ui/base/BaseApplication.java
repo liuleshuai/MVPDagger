@@ -5,6 +5,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.multidex.MultiDex;
 
+import com.liuleshuai.mvpdagger.di.component.AppComponent;
+import com.liuleshuai.mvpdagger.di.component.DaggerAppComponent;
+import com.liuleshuai.mvpdagger.di.module.AppModule;
+import com.liuleshuai.mvpdagger.di.module.HttpModule;
+
 /**
  * Created by LiuKuo at 2018/3/21
  */
@@ -48,4 +53,11 @@ public abstract class BaseApplication extends Application {
      * 在此进行SDK的初始化
      */
     public abstract void initSDK();
+
+    public static synchronized  AppComponent getAppComponent() {
+        return DaggerAppComponent.builder()
+                .appModule(new AppModule())
+                .httpModule(new HttpModule())
+                .build();
+    }
 }

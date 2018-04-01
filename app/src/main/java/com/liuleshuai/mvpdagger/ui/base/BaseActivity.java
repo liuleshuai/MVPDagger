@@ -4,7 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.liuleshuai.mvpdagger.di.component.ActivityComponent;
+import com.liuleshuai.mvpdagger.di.component.DaggerActivityComponent;
+import com.liuleshuai.mvpdagger.di.module.ActivityModule;
 import com.liuleshuai.mvpdagger.tools.ActivityManager;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -15,6 +19,7 @@ import me.yokeyword.fragmentation.SupportActivity;
  */
 
 public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements BaseView {
+    @Inject
     protected T mPresenter;
     private Unbinder unBinder;
 
@@ -47,7 +52,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
 
 
     protected ActivityComponent getActivityComponent() {
-        return null;
+        return DaggerActivityComponent.builder().
+                appComponent(BaseApplication.getAppComponent())
+                .activityModule(new ActivityModule(this))
+                .build();
     }
 
     /**

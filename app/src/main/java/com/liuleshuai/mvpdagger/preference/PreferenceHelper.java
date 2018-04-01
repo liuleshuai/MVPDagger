@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import com.liuleshuai.mvpdagger.app.Constants;
 import com.liuleshuai.mvpdagger.app.MyApplication;
 
+import javax.inject.Inject;
+
 /**
  * Created by LiuKuo at 2018/3/29
  */
@@ -14,6 +16,7 @@ public class PreferenceHelper implements PreferenceImpl {
     private static final String APP_SHARE = "app_preference";
     private final SharedPreferences mPreferences;
 
+    @Inject
     public PreferenceHelper() {
         mPreferences = MyApplication.getAppContext().getSharedPreferences(APP_SHARE, Context.MODE_PRIVATE);
     }

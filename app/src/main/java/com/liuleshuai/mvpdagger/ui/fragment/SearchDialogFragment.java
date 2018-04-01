@@ -79,6 +79,11 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
                 });
     }
 
+    @Override
+    protected void initInject() {
+        getFragmentComponent().inject(this);
+    }
+
     @OnClick(R.id.search_back_ib)
     public void onViewClicked() {
         dismiss();

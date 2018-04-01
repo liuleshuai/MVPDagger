@@ -72,7 +72,8 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
 
     //butterKnife(注意：在library中只需这一个，否则报错)
-    compile 'com.jakewharton:butterknife:8.8.1'
+    compile "com.jakewharton:butterknife:8.8.1"
+    annotationProcessor "com.jakewharton:butterknife-compiler:8.8.1"
 
     // fragmentation
     compile 'me.yokeyword:fragmentation:1.3.3'

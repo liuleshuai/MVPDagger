@@ -7,7 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.liuleshuai.mvpdagger.tools.ClassUtil;
+import com.liuleshuai.mvpdagger.di.component.DaggerFragmentComponent;
+import com.liuleshuai.mvpdagger.di.component.FragmentComponent;
+import com.liuleshuai.mvpdagger.di.module.FragmentModule;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -17,6 +21,7 @@ import butterknife.Unbinder;
  */
 
 public abstract class BaseDialogFragment<T extends BasePresenter> extends DialogFragment implements BaseView {
+    @Inject
     protected T mPresenter;
     private Unbinder unBinder;
 
@@ -30,7 +35,7 @@ public abstract class BaseDialogFragment<T extends BasePresenter> extends Dialog
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        inject();
+        initInject();
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
@@ -47,6 +52,13 @@ public abstract class BaseDialogFragment<T extends BasePresenter> extends Dialog
         unBinder.unbind();
     }
 
+    protected FragmentComponent getFragmentComponent() {
+        return DaggerFragmentComponent.builder()
+                .appComponent(BaseApplication.getAppComponent())
+                .fragmentModule(new FragmentModule(this))
+                .build();
+    }
+
     /**
      * 获取当前Activity的UI布局
      *
@@ -60,9 +72,7 @@ public abstract class BaseDialogFragment<T extends BasePresenter> extends Dialog
     protected abstract void initEventAndData();
 
     /**
-     * 调用映射代码（此处无法使用Dagger，因为不在一个包下）
+     * 注入当前Activity所需的依赖
      */
-    protected void inject() {
-        mPresenter = ClassUtil.getT(this, 0);
-    }
+    protected abstract void initInject();
 }

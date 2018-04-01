@@ -24,7 +24,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
 
     @Override
     protected void initEventAndData() {
-        animationView.setAnimation("AndroidWare.json");
+        animationView.setAnimation("A.json");
         animationView.playAnimation();
         animationView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
@@ -51,6 +51,6 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
 
     @Override
     protected void initInject() {
-
+        getActivityComponent().inject(this);
     }
 }

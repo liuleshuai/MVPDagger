@@ -65,6 +65,11 @@ public class WeChatFragment extends BaseFragment<WeChatPresenter> implements WeC
         mRecyclerView.setAdapter(adapter);
     }
 
+    @Override
+    protected void initInject() {
+        getFragmentComponent().inject(this);
+    }
+
     private void initData() {
         data = new ArrayList<>();
         data.add(new WeChatBean("1", R.mipmap.icon_like_article_not_selected));

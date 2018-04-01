@@ -2,12 +2,15 @@ package com.liuleshuai.mvpdagger.presenter;
 
 import com.alibaba.fastjson.JSON;
 import com.liuleshuai.mvpdagger.app.Constants;
+import com.liuleshuai.mvpdagger.app.DataManager;
 import com.liuleshuai.mvpdagger.bean.MovieEntity;
 import com.liuleshuai.mvpdagger.http.MovieLoader;
 import com.liuleshuai.mvpdagger.model.SearchDialogContract;
 import com.liuleshuai.mvpdagger.ui.base.BasePresenter;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import io.reactivex.functions.Consumer;
 
@@ -16,6 +19,12 @@ import io.reactivex.functions.Consumer;
  */
 
 public class SearchDialogPresenter extends BasePresenter<SearchDialogContract.View> implements SearchDialogContract.Presenter {
+    private DataManager mDataManager;
+
+    @Inject
+    public SearchDialogPresenter(DataManager mDataManager) {
+        this.mDataManager = mDataManager;
+    }
 
     @Override
     public void getMovieData() {
