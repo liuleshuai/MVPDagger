@@ -19,6 +19,12 @@ public class AppModule {
 
     @Singleton
     @Provides
+    DataManager provideDataManager(HttpHelper httpHelper, PreferenceImpl preference) {
+        return new DataManager(httpHelper, preference);
+    }
+
+    @Singleton
+    @Provides
     HttpHelper provideHttpHelper(RetrofitHelper retrofitHelper) {
         return retrofitHelper;
     }
@@ -29,9 +35,4 @@ public class AppModule {
         return preferenceHelper;
     }
 
-    @Singleton
-    @Provides
-    DataManager provideDataManager(HttpHelper httpHelper, PreferenceImpl preference) {
-        return new DataManager(httpHelper, preference);
-    }
 }

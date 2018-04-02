@@ -3,7 +3,6 @@ package com.liuleshuai.mvpdagger.di.module;
 import com.liuleshuai.mvpdagger.BuildConfig;
 import com.liuleshuai.mvpdagger.app.Constants;
 import com.liuleshuai.mvpdagger.app.MyApplication;
-import com.liuleshuai.mvpdagger.di.qualifier.CustomeNameUrl;
 import com.liuleshuai.mvpdagger.http.HttpApis;
 import com.liuleshuai.mvpdagger.http.cookies.CookiesManager;
 import com.liuleshuai.mvpdagger.tools.NetWorkUtils;
@@ -12,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -32,17 +32,31 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @Module
 public class HttpModule {
+//    @Singleton
+//    @Provides
+//    HttpApis provideHttpApis(@CustomeNameUrl Retrofit retrofit) {
+//        return retrofit.create(HttpApis.class);
+//    }
+
     @Singleton
+    @Named("WanAndroid")
     @Provides
-    HttpApis provideHttpApis(@CustomeNameUrl Retrofit retrofit) {
+    HttpApis provideHttpApis2(@Named("WanAndroid") Retrofit retrofit) {
         return retrofit.create(HttpApis.class);
     }
 
+//    @Singleton
+//    @CustomeNameUrl
+//    @Provides
+//    Retrofit provideRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+//        return createRetrofit(builder, client, Constants.MOVIE_URL);
+//    }
+
     @Singleton
-    @CustomeNameUrl
+    @Named("WanAndroid")
     @Provides
-    Retrofit provideRetrofit(Retrofit.Builder builder, OkHttpClient client) {
-        return createRetrofit(builder, client, Constants.MOVIE_URL);
+    Retrofit provideRetrofit2(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, Constants.WAN_ANDROID_URL);
     }
 
     @Singleton
@@ -72,8 +86,10 @@ public class HttpModule {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
-                if (NetWorkUtils.isNetConnected(MyApplication.getAppContext())) {
-                    request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
+                if (!NetWorkUtils.isNetConnected(MyApplication.getAppContext())) {
+                    request = request.newBuilder()
+                            .cacheControl(CacheControl.FORCE_CACHE)
+                            .build();
                 }
                 Response response = chain.proceed(request);
               /*  maxAge:没有超出maxAge,不管怎么样都是返回缓存数据，超过了maxAge,发起新的请求获取数据更新，请求失败返回缓存数据。
@@ -98,8 +114,8 @@ public class HttpModule {
                 return response;
             }
         };
-        builder.addInterceptor(cacheInterceptor);
         builder.addNetworkInterceptor(cacheInterceptor);
+        builder.addInterceptor(cacheInterceptor);
         builder.cache(cache);
 
         builder.connectTimeout(Constants.CONNECT_TIMEOUT, TimeUnit.SECONDS);

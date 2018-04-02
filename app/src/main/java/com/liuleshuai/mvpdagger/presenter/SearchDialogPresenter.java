@@ -1,14 +1,12 @@
 package com.liuleshuai.mvpdagger.presenter;
 
 import com.alibaba.fastjson.JSON;
-import com.liuleshuai.mvpdagger.app.Constants;
 import com.liuleshuai.mvpdagger.app.DataManager;
 import com.liuleshuai.mvpdagger.bean.MovieEntity;
-import com.liuleshuai.mvpdagger.http.MovieLoader;
+import com.liuleshuai.mvpdagger.bean.UsefulSitesResponse;
 import com.liuleshuai.mvpdagger.model.SearchDialogContract;
+import com.liuleshuai.mvpdagger.tools.RxUtil;
 import com.liuleshuai.mvpdagger.ui.base.BasePresenter;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -27,13 +25,28 @@ public class SearchDialogPresenter extends BasePresenter<SearchDialogContract.Vi
     }
 
     @Override
-    public void getMovieData() {
-        MovieLoader.builder(Constants.MOVIE_URL).getMovie(0, 10)
-                .subscribe(new Consumer<List<MovieEntity.SubjectsBean>>() {
+    public void getMovieData(int start, int count) {
+        addDisposable(mDataManager.getMovieTop(start, count)
+                .compose(RxUtil.<MovieEntity>toMain())
+                .subscribe(new Consumer<MovieEntity>() {
                     @Override
-                    public void accept(List<MovieEntity.SubjectsBean> subjectsBeen) throws Exception {
-                        mView.showMovieData(JSON.toJSONString(subjectsBeen));
+                    public void accept(MovieEntity movieEntity) throws Exception {
+                        mView.showMovieData(JSON.toJSONString(movieEntity));
                     }
-                });
+                })
+        );
+    }
+
+    @Override
+    public void getUsefulSites() {
+        addDisposable(mDataManager.getUsefulSites()
+                .compose(RxUtil.<UsefulSitesResponse>toMain())
+                .subscribe(new Consumer<UsefulSitesResponse>() {
+                    @Override
+                    public void accept(UsefulSitesResponse usefulSitesResponse) throws Exception {
+                        mView.showUsefulSites(JSON.toJSONString(usefulSitesResponse));
+                    }
+                })
+        );
     }
 }

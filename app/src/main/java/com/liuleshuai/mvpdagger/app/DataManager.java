@@ -1,6 +1,7 @@
 package com.liuleshuai.mvpdagger.app;
 
 import com.liuleshuai.mvpdagger.bean.MovieEntity;
+import com.liuleshuai.mvpdagger.bean.UsefulSitesResponse;
 import com.liuleshuai.mvpdagger.http.HttpHelper;
 import com.liuleshuai.mvpdagger.preference.PreferenceImpl;
 
@@ -22,6 +23,11 @@ public class DataManager implements HttpHelper, PreferenceImpl {
     @Override
     public Flowable<MovieEntity> getMovieTop(int start, int count) {
         return mHttpHelper.getMovieTop(start, count);
+    }
+
+    @Override
+    public Flowable<UsefulSitesResponse> getUsefulSites() {
+        return mHttpHelper.getUsefulSites();
     }
 
     @Override

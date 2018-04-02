@@ -1,6 +1,7 @@
 package com.liuleshuai.mvpdagger.http;
 
 import com.liuleshuai.mvpdagger.bean.MovieEntity;
+import com.liuleshuai.mvpdagger.bean.UsefulSitesResponse;
 
 import io.reactivex.Flowable;
 
@@ -9,6 +10,8 @@ import io.reactivex.Flowable;
  */
 
 public interface HttpHelper {
-    
+
     Flowable<MovieEntity> getMovieTop(int start, int count);
+
+    Flowable<UsefulSitesResponse> getUsefulSites();
 }

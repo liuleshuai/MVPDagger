@@ -9,6 +9,7 @@ import java.io.File;
 public class Constants {
 
     public static final String MOVIE_URL = "https://api.douban.com/v2/movie/";
+    public static final String WAN_ANDROID_URL = "http://www.wanandroid.com/";
 
     /**
      * Path

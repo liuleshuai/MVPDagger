@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by LiuKuo at 2018/3/23
@@ -71,10 +72,12 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
     @Override
     protected void initEventAndData() {
         RxView.clicks(searchTv).throttleFirst(500, TimeUnit.MILLISECONDS)
+                .observeOn(Schedulers.io())
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        mPresenter.getMovieData();
+//                        mPresenter.getMovieData(0, 10);
+                        mPresenter.getUsefulSites();
                     }
                 });
     }
@@ -91,6 +94,11 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
 
     @Override
     public void showMovieData(String data) {
+        tv.setText(data);
+    }
+
+    @Override
+    public void showUsefulSites(String data) {
         tv.setText(data);
     }
 }
