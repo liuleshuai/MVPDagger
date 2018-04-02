@@ -76,8 +76,8 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-//                        mPresenter.getMovieData(0, 10);
-                        mPresenter.getUsefulSites();
+                        mPresenter.getMovieData(0, 10);
+//                        mPresenter.getUsefulSites();
                     }
                 });
     }

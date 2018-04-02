@@ -4,7 +4,6 @@ import com.liuleshuai.mvpdagger.bean.MovieEntity;
 import com.liuleshuai.mvpdagger.bean.UsefulSitesResponse;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import io.reactivex.Flowable;
 
@@ -16,7 +15,7 @@ public class RetrofitHelper implements HttpHelper {
     private HttpApis httpApis;
 
     @Inject
-    public RetrofitHelper(@Named("WanAndroid") HttpApis httpApis) {
+    public RetrofitHelper(HttpApis httpApis) {
         this.httpApis = httpApis;
     }
 

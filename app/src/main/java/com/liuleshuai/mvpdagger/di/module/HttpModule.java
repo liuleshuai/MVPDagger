@@ -3,6 +3,7 @@ package com.liuleshuai.mvpdagger.di.module;
 import com.liuleshuai.mvpdagger.BuildConfig;
 import com.liuleshuai.mvpdagger.app.Constants;
 import com.liuleshuai.mvpdagger.app.MyApplication;
+import com.liuleshuai.mvpdagger.di.qualifier.CustomeNameUrl;
 import com.liuleshuai.mvpdagger.http.HttpApis;
 import com.liuleshuai.mvpdagger.http.cookies.CookiesManager;
 import com.liuleshuai.mvpdagger.tools.NetWorkUtils;
@@ -32,11 +33,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @Module
 public class HttpModule {
-//    @Singleton
-//    @Provides
-//    HttpApis provideHttpApis(@CustomeNameUrl Retrofit retrofit) {
-//        return retrofit.create(HttpApis.class);
-//    }
+    @Singleton
+    @Provides
+    HttpApis provideHttpApis(@CustomeNameUrl Retrofit retrofit) {
+        return retrofit.create(HttpApis.class);
+    }
 
     @Singleton
     @Named("WanAndroid")
@@ -45,12 +46,12 @@ public class HttpModule {
         return retrofit.create(HttpApis.class);
     }
 
-//    @Singleton
-//    @CustomeNameUrl
-//    @Provides
-//    Retrofit provideRetrofit(Retrofit.Builder builder, OkHttpClient client) {
-//        return createRetrofit(builder, client, Constants.MOVIE_URL);
-//    }
+    @Singleton
+    @CustomeNameUrl
+    @Provides
+    Retrofit provideRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, Constants.MOVIE_URL);
+    }
 
     @Singleton
     @Named("WanAndroid")
