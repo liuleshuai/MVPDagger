@@ -4,7 +4,9 @@ import com.liuleshuai.mvpdagger.BuildConfig;
 import com.liuleshuai.mvpdagger.app.Constants;
 import com.liuleshuai.mvpdagger.app.MyApplication;
 import com.liuleshuai.mvpdagger.di.qualifier.CustomeNameUrl;
-import com.liuleshuai.mvpdagger.http.HttpApis;
+import com.liuleshuai.mvpdagger.http.LoggingInterceptor;
+import com.liuleshuai.mvpdagger.http.apis.DouBanApis;
+import com.liuleshuai.mvpdagger.http.apis.WanAndroidApis;
 import com.liuleshuai.mvpdagger.http.cookies.CookiesManager;
 import com.liuleshuai.mvpdagger.tools.NetWorkUtils;
 
@@ -23,40 +25,47 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
+ * 注：添加网站api时添加相应的两个apis方法
+ * <p>
  * Created by LiuKuo at 2018/3/29
  */
 @Module
 public class HttpModule {
-    @Singleton
-    @Provides
-    HttpApis provideHttpApis(@CustomeNameUrl Retrofit retrofit) {
-        return retrofit.create(HttpApis.class);
-    }
 
+    /**
+     * 豆瓣apis
+     */
     @Singleton
-    @Named("WanAndroid")
     @Provides
-    HttpApis provideHttpApis2(@Named("WanAndroid") Retrofit retrofit) {
-        return retrofit.create(HttpApis.class);
+    DouBanApis provideDouBanApis(@CustomeNameUrl Retrofit retrofit) {
+        return retrofit.create(DouBanApis.class);
     }
 
     @Singleton
     @CustomeNameUrl
     @Provides
-    Retrofit provideRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+    Retrofit provideDouBanRetrofit(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, Constants.MOVIE_URL);
+    }
+
+    /**
+     * 玩安卓apis
+     */
+    @Singleton
+    @Provides
+    WanAndroidApis provideWAApis(@Named("WanAndroid") Retrofit retrofit) {
+        return retrofit.create(WanAndroidApis.class);
     }
 
     @Singleton
     @Named("WanAndroid")
     @Provides
-    Retrofit provideRetrofit2(Retrofit.Builder builder, OkHttpClient client) {
+    Retrofit provideWARetrofit(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, Constants.WAN_ANDROID_URL);
     }
 
@@ -75,10 +84,16 @@ public class HttpModule {
     @Singleton
     @Provides
     OkHttpClient provideOkHttpClient(final OkHttpClient.Builder builder) {
-        if (BuildConfig.DEBUG) {
+
+/*        if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
             builder.addInterceptor(loggingInterceptor);
+        }*/
+
+        //添加Log输出格式
+        if (BuildConfig.LOG_DEBUG) {
+            builder.addInterceptor(new LoggingInterceptor());
         }
         File cacheFile = new File(Constants.PATH_CACHE);
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 50); // 50M

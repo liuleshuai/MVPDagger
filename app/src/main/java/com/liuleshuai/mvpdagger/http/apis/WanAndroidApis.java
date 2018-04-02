@@ -1,21 +1,15 @@
-package com.liuleshuai.mvpdagger.http;
+package com.liuleshuai.mvpdagger.http.apis;
 
-import com.liuleshuai.mvpdagger.bean.MovieEntity;
 import com.liuleshuai.mvpdagger.bean.UsefulSitesResponse;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 /**
- * Created by LiuKuo at 2018/3/29
+ * Created by LiuKuo at 2018/4/2
  */
 
-public interface HttpApis {
-
-    @GET("top250")
-    Flowable<MovieEntity> getMovieTop(@Query("start") int start, @Query("count") int count);
-
+public interface WanAndroidApis {
     /**
      * 常用网站
      * http://www.wanandroid.com/friend/json

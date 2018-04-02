@@ -71,13 +71,13 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
 
     @Override
     protected void initEventAndData() {
+        mPresenter.getMovieData(0, 10);
         RxView.clicks(searchTv).throttleFirst(500, TimeUnit.MILLISECONDS)
                 .observeOn(Schedulers.io())
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        mPresenter.getMovieData(0, 10);
-//                        mPresenter.getUsefulSites();
+                        mPresenter.getUsefulSites();
                     }
                 });
     }

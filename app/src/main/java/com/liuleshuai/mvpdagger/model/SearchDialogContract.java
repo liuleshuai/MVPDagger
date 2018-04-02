@@ -9,11 +9,13 @@ import com.liuleshuai.mvpdagger.ui.base.BaseView;
 public interface SearchDialogContract {
     interface View extends BaseView {
         void showMovieData(String data);
+
         void showUsefulSites(String data);
     }
 
     interface Presenter {
         void getMovieData(int start, int count);
+
         void getUsefulSites();
     }
 }
